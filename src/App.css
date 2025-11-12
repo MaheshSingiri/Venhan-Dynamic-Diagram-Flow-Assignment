@@ -1,0 +1,167 @@
+/* ===========================
+   Global Styles
+=========================== */
+:root {
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* ===========================
+   App Layout
+=========================== */
+.app-root {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===========================
+   Sidebar Styling
+=========================== */
+.sidebar {
+  width: 320px;
+  min-width: 280px;
+  background-color: #ffffff;
+  padding: 16px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  border-right: 1px solid #e5e7eb;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.panel {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel h4 {
+  font-size: 1rem;
+  color: #374151;
+  margin: 0;
+}
+
+/* ===========================
+   Inputs & Buttons
+=========================== */
+input, select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+.coords {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+button.danger {
+  background-color: #dc2626;
+}
+
+button.danger:hover {
+  background-color: #b91c1c;
+}
+
+/* ===========================
+   List Styling
+=========================== */
+.list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 6px 0;
+}
+
+.list-item span {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* ===========================
+   Diagram Area
+=========================== */
+.diagram-wrapper {
+  flex: 1;
+  background-color: #f3f4f6;
+  position: relative;
+}
+
+.react-flow__renderer {
+  height: 100%;
+}
+
+/* ===========================
+   Footer
+=========================== */
+.sidebar-footer {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+@media (max-width: 768px) {
+  .app-root {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .diagram-wrapper {
+    height: calc(100vh - 250px);
+  }
+}
