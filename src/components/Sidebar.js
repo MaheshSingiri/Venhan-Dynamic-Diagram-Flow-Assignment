@@ -49,6 +49,15 @@ function Sidebar({ nodes, edges, setNodes, setEdges, selected, setSelected }) {
     }
     setSelected(null);
   };
+// Delete a node and its connected edges
+const removeNode = (id) => {
+  if (!window.confirm('Delete this node and all connected edges?')) return;
+  setNodes((prev) => prev.filter((n) => n.id !== id));
+  setEdges((prev) => prev.filter((e) => e.source !== id && e.target !== id));
+  if (selected && selected.type === 'node' && selected.id === id) {
+    setSelected(null);
+  }
+};
 
   const reset = () => {
     if (window.confirm('Clear all nodes and edges?')) {
@@ -83,6 +92,22 @@ function Sidebar({ nodes, edges, setNodes, setEdges, selected, setSelected }) {
         </select>
         <button onClick={addEdge}>Add Edge</button>
       </div>
+   
+   <div className="panel">
+  <h4>Nodes</h4>
+  <div className="list">
+    {nodes.length === 0 && <div style={{ color: '#6b7280' }}>No nodes yet</div>}
+    {nodes.map((n) => (
+      <div key={n.id} className="list-item">
+        <span>{n.data?.label || n.id}</span>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={() => setSelected({ type: 'node', id: n.id })}>Edit</button>
+          <button onClick={() => removeNode(n.id)} className="danger">Delete</button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
 
       {editing && (
         <div className='panel'>
